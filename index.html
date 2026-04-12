@@ -3,48 +3,113 @@
   <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>MOVE | Pathfinder Protocol</title>
-      <link rel="stylesheet" href="styles/main.css">
+        <title>MOVE | Next-Gen Wellness Platform</title>
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
       <script src="https://unpkg.com/lucide@latest"></script>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      <link rel="stylesheet" href="styles/main.css">
   </head>
-<body class="obsidian-theme">
-    <div id="login-gate" class="glass-overlay">
-            <div class="login-card glass-panel">
-                        <div class="brand">MOVE</div>div>
-                        <p>SECURITY LEVEL: PATHFINDER</p>
-                        <button id="login-btn" class="premium-btn">INITIALIZE BIOMETRIC SCAN</button>button>
-            </div>div>
-    </div>div>
-    <div id="app" style="display:none; flex-direction:row;">
-            <nav class="side-nav glass-panel">
-                        <div class="logo">MOVE</div>div>
-                        <ul style="list-style:none; padding:0;">
-                                        <li><a href="#" class="active">Dashboard</a>a></li>
-                                        <li><a href="#">Analytics</a>a></li>
-                                        <li><a href="#">Community</a>a></li>
-                                        <li><a href="#">AR Hub</a>a></li>
-                        </ul>ul>
-                        <div class="user-profile" style="margin-top:auto; display:flex; gap:10px; align-items:center;">
-                                        <div class="avatar" style="background:#444; width:30px; height:30px; border-radius:50%; display:flex; align-items:center; justify-content:center;">U</div>div>
-                                        <div>User</div>
-                        </div>
-            </nav>nav>
-            <main style="flex:1; padding:20px;">
-                <header><h1>Welcome, User</h1></header>
-                        <div id="hologram-container" style="height:300px; background:radial-gradient(circle, #222, #000);"></div>
-                        <div class="grid" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:20px;">
-                                        <div class="card glass-panel" style="padding:20px;">Heart Rate: 72 BPM</div>
-                                        <div class="card glass-panel" style="padding:20px;">Energy: Optimal</div>
-                        </div>
-            </main>main>
-    </div>
-    <script>
-              document.getElementById('login-btn').onclick = () => {
-                            document.getElementById('login-gate').style.display = 'none';
-                            document.getElementById('app').style.display = 'flex';
-              }
-                </script>
-</body>body>
+<body>
+      <div id="login-gate">
+                <div class="login-panel">
+                              <div class="logo" style="justify-content: center; margin-bottom: 30px;">
+                                                <i data-lucide="activity"></i>i>
+                                                MOVE
+                              </div>div>
+                              <div class="scan-ring">
+                                                <i data-lucide="fingerprint" style="width: 48px; height: 48px; color: var(--accent-cyan);"></i>i>
+                              </div>div>
+                              <h2 class="glow-text">System Locked</h2>h2>
+                              <p style="color: var(--text-secondary); margin-top: 10px; font-size: 0.9rem;">PLACE FINGER TO INITIALIZE</p>p>
+                              <div class="login-status">WAITING FOR BIOMETRICS...</div>div>
+                              <button id="init-scan" class="action-btn" style="margin-top: 30px; width: 100%;">INTIATE SCAN</button>button>
+                </div>div>
+      </div>div>
+
+      <div id="app-container">
+                <aside>
+                              <div class="logo">
+                                                <i data-lucide="activity"></i>i>
+                                                MOVE
+                              </div>div>
+                              <ul class="nav-links">
+                                                <li><a href="#" class="nav-item active" id="nav-dash" data-tab="dashboard"><i data-lucide="layout-dashboard"></i>i> <span>Dashboard</span></a>a></li>
+                                              <li><a href="#" class="nav-item" id="nav-analytics" data-tab="analytics"><i data-lucide="bar-chart-3"></i>i> <span>Analytics</span></a>a></li>
+                                              <li><a href="#" class="nav-item" id="nav-community" data-tab="community"><i data-lucide="users"></i>i> <span>Community</span></a>a></li>
+                                              <li><a href="#" class="nav-item" id="nav-journal" data-tab="journal"><i data-lucide="book-open"></i>i> <span>Journal</span>span></a>a></li>
+                                              <li><a href="#" class="nav-item" id="nav-ar" data-tab="ar-hub"><i data-lucide="view"></i>i> <span>AR Hub</span>span></a>a></li>
+                                              <li><a href="#" class="nav-item" id="nav-connect" data-tab="connections"><i data-lucide="link"></i>i> <span>Connect</span>span></a>a></li>
+                              </ul>ul>
+                            <div class="user-profile glass" style="padding: 15px; margin-top: auto; display: flex; align-items: center; gap: 12px;">
+                                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Pathfinder" alt="Avatar" class="avatar" style="width: 40px; height: 40px;">
+                                            <div>
+                                                                  <div style="font-weight: 600; font-size: 0.85rem;">User</div>
+                                                                  <div style="font-size: 0.7rem; color: var(--text-secondary);">LVL 1 Pathfinder</div>
+                                            </div>
+                            </div>
+                </aside>
+                <main>
+                              <div id="hologram-wrapper"></div>
+                              <div class="content-layer animated">
+                                                <header class="header">
+                                                                      <div>
+                          <h1 class="glow-text" style="font-size: 2.8rem; letter-spacing: -1px;">Welcome back.</h1>h1>
+                                                                                                <p style="color: var(--text-secondary); font-size: 1.1rem; margin-top: 5px;">Synchronizing with your metabolic rhythm.</p>p>
+                                                                      </div>
+                                                </header>header>
+
+                                                <section class="affirmation-box glass" style="margin-bottom: 30px; display: flex; justify-content: space-around; align-items: center; padding: 25px;">
+                                                                      <div style="text-align: center; position: relative;">
+                                                                                                <svg width="120" height="120" viewBox="0 0 100 100">
+                                                                                                                              <circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="8"/>
+                                                                                                                              <circle cx="50" cy="50" r="30" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="8"/>
+                                                                                                                              <circle cx="50" cy="50" r="20" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="8"/>
+                                                                                                                              <circle cx="50" cy="50" r="40" fill="none" stroke="#26ffab" stroke-width="8" stroke-dasharray="251.2" stroke-dashoffset="60" stroke-linecap="round"/>
+                                                                                                                              <circle cx="50" cy="50" r="30" fill="none" stroke="#ff4d6a" stroke-width="8" stroke-dasharray="188.4" stroke-dashoffset="40" stroke-linecap="round"/>
+                                                                                                                              <circle cx="50" cy="50" r="20" fill="none" stroke="#4d9aff" stroke-width="8" stroke-dasharray="125.6" stroke-dashoffset="20" stroke-linecap="round"/>
+                                                                                                  </svg>svg>
+                                                                                                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                                                                                                                              <i data-lucide="heart" style="width: 16px; color: #ff4d6a;"></i>i>
+                                                                                                  </div>
+                                                                      </div>
+                                                                      <div style="display: flex; flex-direction: column; gap: 10px;">
+                                                                                                <div style="color: #26ffab; font-weight: 700;">Steps: 8,420</div>
+                                                                                                <div style="color: #ff4d6a; font-weight: 700;">Active: 45 min</div>
+                                                                                                <div style="color: #4d9aff; font-weight: 700;">Cals: 1,850</div>
+                                                                      </div>
+                                                </section>section>
+
+                                                <div id="tab-dashboard" class="tab-content">
+                                                                      <div class="dashboard-grid">
+                                                                                                <div class="card glass" style="background: linear-gradient(135deg, rgba(38, 255, 171, 0.1) 0%, rgba(0,0,0,0) 100%);">
+                                                                                                                              <div class="card-title">Energy Score</div>
+                                                                                                                              <div class="card-value" style="font-size: 3.5rem;">82</div>
+                                                                                                                              <div class="card-trend" style="color: #26ffab;">High Readiness</div>
+                                                                                                  </div>
+                                                                                                <div class="card glass">
+                                                                                                                              <div class="card-title">Sleep</div>
+                                                                                                                              <div class="card-value">7h 24m</div>
+                                                                                                  </div>
+                                                                                                <div class="card glass">
+                                                                                                                              <div class="card-title">Stress</div>
+                                                                                                                              <div class="card-value">Low</div>
+                                                                                                  </div>
+                                                                      </div>
+                                                </div>
+                              </div>
+                </main>
+      </div>
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+      <script src="scripts/main.js"></script>
+      <script src="scripts/ar_hologram.js"></script>
+</body>
 </html>html>
-    </script></h1></header></div></li></li></p></title>
+
+                </main>
+                                            </div></li></li></span></span></li>
+                </aside>
+</body></title>
   </head>
