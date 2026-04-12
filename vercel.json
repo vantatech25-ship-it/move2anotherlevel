@@ -1,0 +1,23 @@
+{
+    "version": 2,
+    "name": "move-wellness-platform",
+    "builds": [
+          { "src": "index.html", "use": "@vercel/static" },
+          { "src": "styles/*.css", "use": "@vercel/static" },
+          { "src": "scripts/*.js", "use": "@vercel/static" }
+    ],
+    "routes": [
+          { "handle": "filesystem" },
+          { "src": "/(.*)", "dest": "/index.html" }
+    ],
+    "headers": [
+          {
+                  "source": "/(.*)",
+                  "headers": [
+                            { "key": "X-Frame-Options", "value": "DENY" },
+                            { "key": "X-Content-Type-Options", "value": "nosniff" },
+                            { "key": "Permissions-Policy", "value": "accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), megaphone=(), payment=(), usb=()" }
+                  ]
+          }
+    ]
+}
