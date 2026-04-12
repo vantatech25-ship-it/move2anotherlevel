@@ -1,310 +1,50 @@
 <!DOCTYPE html>
-  <html lang="en">
+<html lang="en">
   <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>MOVE | Next-Gen Wellness Platform</title>
-    <meta name="description" content="A high-performance wellness and fitness platform for long-term behavioral change, featuring real-time tracking, gamification, and immersive holographic interfaces.">
-    <!-- Google Fonts -->
-      <link rel="preconnect" href="https://fonts.googleapis.com">
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-      <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
-      <!-- Lucide Icons & Chart.js -->
-      <script src="https://unpkg.com/lucide@latest"></script>
-      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>MOVE | Pathfinder Protocol</title>
       <link rel="stylesheet" href="styles/main.css">
+      <script src="https://unpkg.com/lucide@latest"></script>
   </head>
-  <body>
-      <div id="app-container">
-          <!-- Sidebar Navigation -->
-          <aside>
-              <div class="logo">
-                  <i data-lucide="activity"></i>
-                  MOVE
-              </div>
-              <ul class="nav-links">
-                  <li><a href="#" class="nav-item active" id="nav-dash" data-tab="dashboard"><i data-lucide="layout-dashboard"></i> Dashboard</a></li>
-                  <li><a href="#" class="nav-item" id="nav-analytics" data-tab="analytics"><i data-lucide="bar-chart-3"></i> Analytics</a></li>
-                  <li><a href="#" class="nav-item" id="nav-community" data-tab="community"><i data-lucide="users"></i> Community</a></li>
-                  <li><a href="#" class="nav-item" id="nav-journal" data-tab="journal"><i data-lucide="book-open"></i> Journal</a></li>
-                  <li><a href="#" class="nav-item" id="nav-ar" data-tab="ar-hub"><i data-lucide="view"></i> AR Hub</a></li>
-                  <li><a href="#" class="nav-item" id="nav-connect" data-tab="connections"><i data-lucide="link"></i> Connections</a></li>
-              </ul>
-              <div class="user-profile glass" style="padding: 15px; margin-top: auto;">
-                  <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Ivan" alt="Avatar" class="avatar">
-                  <div>
-                      <div style="font-weight: 600; font-size: 0.9rem;">Ivan Archer</div>
-                      <div style="font-size: 0.75rem; color: var(--text-secondary);">LVL 24 Explorer</div>
-                  </div>
-              </div>
-          </aside>
-
-          <!-- Main Content -->
-          <main>
-              <!-- Background Three.js Canvas -->
-              <div id="hologram-wrapper"></div>
-
-              <div class="content-layer animated">
-                  <!-- Header -->
-                  <header class="header">
-                      <div>
-                          <h1 class="glow-text">Welcome back, Ivan</h1>
-                          <p style="color: var(--text-secondary);">Ready to transcend your limits today?</p>
-   to transcend your limits today?</p>
-                      </div>
-                      <div style="display: flex; gap: 15px;">
-                          <button id="focus-toggle" class="glass" style="padding: 10px 20px; border: none; color: var(--accent-cyan); cursor: pointer; display: flex; align-items: center; gap: 10px;">
-                              <i data-lucide="eye-off" style="width: 16px;"></i>
-                              <span style="font-size: 0.8rem; font-weight: 600;">FOCUS MODE</span>
-                          </button>
-                          <div class="glass" style="padding: 10px 20px; display: flex; align-items: center; gap: 10px;">
-                              <i data-lucide="shield-check" style="color: #00ffaa; width: 16px;"></i>
-                              <span style="font-size: 0.8rem; color: #00ffaa; font-weight: 600;">E2E ENCRYPTED</span>
-                          </div>
-                          <div class="glass" style="padding: 10px 20px; display: flex; align-items: center; gap: 15px;">
-                              <span style="font-size: 0.85rem; color: var(--accent-cyan);">Khoi Sync: Live</span>
-                              <div style="width: 8px; height: 8px; background: #00ff22; border-radius: 50%; box-shadow: 0 0 10px #00ff22;"></div>
-                          </div>
-                      </div>
-                  </header>
-
-                  <!-- Daily Affirmation -->
-                  <section class="affirmation-box glass">
-                      <h2 style="font-size: 1.2rem; margin-bottom: 10px; color: var(--accent-cyan);">Daily Transcendence</h2>
-                      <p id="daily-affirmation" style="font-style: italic; font-size: 1.1rem;">"Your growth is not a destination, but a state of being. Move with intention."</p>
-                  </section>
-
-                  <!-- Dashboard Tab (Visible by default) -->
-                <div id="tab-dashboard" class="tab-content">
-                                      <div class="dashboard-grid">
-                                          <!-- Real-time Tracking Card -->
-                                          <div class="card glass">
-                                              <div class="card-title">Heart Rate <i data-lucide="heart" style="color: #ff2e2e;"></i></div>
-                                              <div class="card-value" id="live-heart-rate">72 <span style="font-size: 1rem; font-weight: 400;">BPM</span></div>
-                                              <div class="card-trend"><i data-lucide="trending-down"></i> Stabilizing</div>
-                                          </div>
-
-                                          <div class="card glass">
-                                              <div class="card-title">Daily Energy <i data-lucide="zap" style="color: var(--accent-cyan);"></i></div>
-                                              <div class="card-value">2,450 <span style="font-size: 1rem; font-weight: 400;">KCAL</span></div>
-                                              <div class="card-trend"><i data-lucide="trending-up"></i> +12% vs Yesterday</div>
-                                          </div>
-
-                                          <div class="card glass">
-                                              <div class="card-title">Focus Level <i data-lucide="brain" style="color: var(--accent-violet);"></i></div>
-                                              <div class="card-value">88%</div>
-                                              <div class="card-trend">Optimal for Training</div>
-                                          </div>
-
-                                          <!-- Gamification: Daily Challenges -->
-                                          <div class="card glass journal-log">
-                                              <div class="card-title">Active Missions <i data-lucide="swords" style="color: gold;"></i></div>
-                                              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                                                  <div style="display: flex; flex-direction: column; gap: 15px;">
-                                                      <div style="display: flex; justify-content: space-between; align-items: center;">
-                                                          <span>Morning Mobility Flow</span>
-                                        <span style="font-size: 0.8rem; color: #00ffaa;">DONE</span>
-                                    </div>
-                                    <div style="width: 100%; height: 6px; background: rgba(255,255,255,0.1); border-radius: 4px;">
-                                        <div style="width: 100%; height: 100%; background: var(--accent-cyan); border-radius: 4px;"></div>
-                                                      </div>
-
-                                                      <div style="display: flex; justify-content: space-between; align-items: center;">
-                                                          <span>10k Holographic Trail</span>
-                                        <span style="font-size: 0.8rem;">6.5 / 10 KM</span>
-                                    </div>
-                                    <div style="width: 100%; height: 6px; background: rgba(255,255,255,0.1); border-radius: 4px;">
-                                        <div style="width: 65%; height: 100%; background: var(--accent-violet); border-radius: 4px;"></div>
-                                                      </div>
-                                                  </div>
-                                                  <!-- Journaling Mini-Widget -->
-                                                  <div class="glass" style="padding: 15px; background: rgba(0,0,0,0.2);">
-                                                      <div style="font-size: 0.8rem; margin-bottom: 10px; opacity: 0.7;">DAILY REFLECTION</div>
-                                                      <textarea id="quick-journal" placeholder="How is your mind-body connection today?" style="width: 100%; background: transparent; border: none; color: white; outline: none; resize: none; font-size: 0.9rem; height: 60px;"></textarea>
-                                                      <button onclick="saveQuickLog()" style="float: right; padding: 5px 12px; background: var(--accent-violet); border: none; border-radius: 5px; color: white; cursor: pointer; font-size: 0.75rem;">SAVE LOG</button>
-                                                  </div>
-                                              </div>
-                                          </div>
-
-                                          <!-- Leaderboard -->
-                                          <div class="card glass community-leaderboard">
-                                              <div class="card-title">Community Elite <i data-lucide="trophy"></i></div>
-                                              <ul style="list-style: none; display: flex; flex-direction: column; gap: 20px;">
-                                                  <li style="display: flex; align-items: center; gap: 12px; opacity: 0.6;">
-                                                      <span style="width: 20px;">1.</span>
-                                                      <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah" style="width: 30px; border-radius: 50%;">
-                                                      <span>Sarah J.</span>
-                                                      <span style="margin-left: auto; font-weight: 600;">14.2k pts</span>
-                                                  </li>
-
-                                                  <li style="display: flex; align-items: center; gap: 12px; background: rgba(0, 242, 255, 0.1); padding: 5px 10px; border-radius: 10px;">
-                                                      <span style="width: 20px;">2.</span>
-                                                      <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Ivan" style="width: 30px; border-radius: 50%;">
-                                                      <strong>You</strong>
-                                                      <span style="margin-left: auto; font-weight: 700;">12.8k pts</span>
-                                                  </li>
-                                                  <li style="display: flex; align-items: center; gap: 12px; opacity: 0.6;">
-                                                      <span style="width: 20px;">3.</span>
-                                                      <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Mike" style="width: 30px; border-radius: 50%;">
-                                                      <span>Mike R.</span>
-                                                      <span style="margin-left: auto; font-weight: 600;">11.5k pts</span>
-                                                  </li>
-                                              </ul>
-                                              <div style="margin-top: 30px; border-top: 1px solid var(--glass-border); padding-top: 20px;">
-                                                  <div class="card-title">Personal Objectives <i data-lucide="flag"></i></div>
-                                                  <div style="font-size: 0.85rem;">
-                                                      <div style="margin-bottom: 10px;">- Sub-6min Mile (Holographic)</div>
-                                                      <div style="margin-bottom: 10px;">- 21-Day Mindful Streak</div>
-                                    <button class="action-btn" style="padding: 5px 10px; font-size: 0.65rem; border: 1px solid var(--accent-cyan); background: transparent;" onclick="toggleGoalModal()">SET NEW GOAL</button>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-
-                                  <!-- Analytics Tab (Hidden by default) -->
-                <div id="tab-analytics" class="tab-content" style="display: none;">
-                                      <div class="dashboard-grid">
-                                          <div class="card glass journal-log">
-                                              <div class="card-title">Behavioral Trend Analysis <i data-lucide="line-chart"></i></div>
-                            <canvas id="analyticsChart" style="max-height: 250px;"></canvas>
+<body class="obsidian-theme">
+    <div id="login-gate" class="glass-overlay">
+            <div class="login-card glass-panel">
+                        <div class="brand">MOVE</div>div>
+                        <p>SECURITY LEVEL: PATHFINDER</p>
+                        <button id="login-btn" class="premium-btn">INITIALIZE BIOMETRIC SCAN</button>button>
+            </div>div>
+    </div>div>
+    <div id="app" style="display:none; flex-direction:row;">
+            <nav class="side-nav glass-panel">
+                        <div class="logo">MOVE</div>div>
+                        <ul style="list-style:none; padding:0;">
+                                        <li><a href="#" class="active">Dashboard</a>a></li>
+                                        <li><a href="#">Analytics</a>a></li>
+                                        <li><a href="#">Community</a>a></li>
+                                        <li><a href="#">AR Hub</a>a></li>
+                        </ul>ul>
+                        <div class="user-profile" style="margin-top:auto; display:flex; gap:10px; align-items:center;">
+                                        <div class="avatar" style="background:#444; width:30px; height:30px; border-radius:50%; display:flex; align-items:center; justify-content:center;">U</div>div>
+                                        <div>User</div>
                         </div>
-                        <div class="card glass">
-                            <div class="card-title">Consistency Score <i data-lucide="award"></i></div>
-                                              <div class="card-value" style="color: var(--accent-cyan);">94.8%</div>
-                                              <p style="font-size: 0.8rem; opacity: 0.7;">You are in the top 2% of performers this month.</p>
+            </nav>nav>
+            <main style="flex:1; padding:20px;">
+                <header><h1>Welcome, User</h1></header>
+                        <div id="hologram-container" style="height:300px; background:radial-gradient(circle, #222, #000);"></div>
+                        <div class="grid" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:20px;">
+                                        <div class="card glass-panel" style="padding:20px;">Heart Rate: 72 BPM</div>
+                                        <div class="card glass-panel" style="padding:20px;">Energy: Optimal</div>
                         </div>
-                    </div>
-                </div>
-
-                <!-- AR Hub Tab (Hidden by default) -->
-                <div id="tab-ar-hub" class="tab-content" style="display: none;">
-                                      <div style="text-align: center; padding: 60px;">
-                                          <i data-lucide="view" style="width: 80px; height: 80px; color: var(--accent-cyan); margin-bottom: 20px;"></i>
-                                          <h2 class="glow-text">Augmented Reality Engine Active</h2>
-                                          <p style="margin-bottom: 30px; opacity: 0.7;">Align your device for holographic body scan or immersive training.</p>
-                                          <div style="display: flex; justify-content: center; gap: 20px;">
-                                              <button class="action-btn" style="border: 1px solid var(--accent-cyan); background: transparent;">SCAN BIOMETRICS</button>
-                                              <button class="action-btn" style="background: var(--accent-violet);">VIRTUAL COACH</button>
-                                          </div>
-                                      </div>
-                                  </div>
-                                  <!-- Community Hub Tab (Hidden by default) -->
-                                  <div id="tab-community" class="tab-content" style="display: none;">
-                                      <h2 class="glow-text" style="margin-bottom: 25px;">Elite Support Network</h2>
-                    <div class="dashboard-grid">
-                        <div class="card glass">
-                            <div class="card-title">Active Circles <i data-lucide="users"></i></div>
-                            <div style="display: flex; flex-direction: column; gap: 15px;">
-                                <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(0,242,255,0.05); padding: 10px; border-radius: 10px;">
-                                    <span>High-Performance Longevity</span>
-                                                      <span style="font-size: 0.8rem; opacity: 0.6;">42 Online</span>
-                                                  </div>
-                                                  <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(0,242,255,0.05); padding: 10px; border-radius: 10px;">
-                                                      <span>Biohacking & Nutrition</span>
-                                                      <span style="font-size: 0.8rem; opacity: 0.6;">18 Online</span>
-                                                  </div>
-                                                  <button class="action-btn" style="border: 1px solid var(--accent-violet); background: transparent; font-size: 0.7rem;">JOIN NEW CIRCLE</button>
-                                              </div>
-                                          </div>
-
-                                          <div class="card glass journal-log">
-                                              <div class="card-title">Elite Feed <i data-lucide="message-square"></i></div>
-                                              <div style="font-size: 0.9rem; opacity: 0.8;">
-                                                  <div style="border-bottom: 1px solid var(--glass-border); padding-bottom: 15px; margin-bottom: 15px;">
-                                                      <strong>@SarahJ:</strong> "Just finished the 10k Holographic Trail. The neuro-feedback is insane today!"
-                                                      <div style="font-size: 0.75rem; opacity: 0.5; margin-top: 5px;">2 mins ago</div>
-                                                  </div>
-                                                  <div>
-                                                      <strong>@MikeR:</strong> "Does anyone have tips for optimizing Khoi sync latency on the new wearable firmware?"
-                                                      <div style="font-size: 0.75rem; opacity: 0.5; margin-top: 5px;">15 mins ago</div>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-
-                                  <!-- Journal Hub Tab (Hidden by default) -->
-                                  <div id="tab-journal" class="tab-content" style="display: none;">
-                                      <div class="dashboard-grid">
-                                          <div class="card glass journal-log">
-                                              <div class="card-title">Deep Reflection <i data-lucide="book-open"></i></div>
-                                              <textarea id="deep-journal" placeholder="Describe the quality of your focus and the resonance of your physical state..." style="width: 100%; height: 180px; background: transparent; border: none; color: white; outline: none; resize: none; font-size: 1rem; line-height: 1.6;"></textarea>
-                                              <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 15px;">
-                                                  <span style="font-size: 0.8rem; opacity: 0.5;">Auto-saving to encrypted cloud...</span>
-                                                  <button class="action-btn" style="background: var(--accent-cyan); color: #000;">ARCHIVE ENTRY</button>
-                                              </div>
-                                          </div>
-                                          <div class="card glass">
-                                              <div class="card-title">Mood Resonance <i data-lucide="smile"></i></div>
-                                              <div style="text-align: center; padding: 20px;">
-                                                  <div style="font-size: 3rem; margin-bottom: 10px;">*</div>
-                                                  <h3 style="color: var(--accent-cyan);">Flow State</h3>
-                                                  <p style="font-size: 0.8rem; opacity: 0.7; margin-top: 10px;">Your entries suggest a 15% increase in cognitive coherence this week.</p>
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-
-                                  <!-- Connections Tab (Hidden by default) -->
-                <div id="tab-connections" class="tab-content" style="display: none;">
-                                      <div class="dashboard-grid">
-                                          <div class="card glass">
-                                              <div class="card-title">Khoi Ecosystem <i data-lucide="radio" style="color: var(--accent-cyan);"></i></div>
-                                              <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
-                                                  <span>Real-time Sync</span>
-                                                  <div style="width: 40px; height: 20px; background: var(--accent-cyan); border-radius: 10px; position: relative;">
-                                                      <div style="width: 16px; height: 16px; background: white; border-radius: 50%; position: absolute; right: 2px; top: 2px;"></div>
-                                                  </div>
-                                              </div>
-                                              <p style="font-size: 0.8rem; margin-top: 15px; opacity: 0.6;">All behavioral data is pushed to Khoi servers via secure tunnel.</p>
-                                          </div>
-                                          <div class="card glass">
-                                              <div class="card-title">Apple Health <i data-lucide="heart"></i></div>
-                                              <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
-                                                  <span>Import Data</span>
-                                                  <div style="width: 40px; height: 20px; background: rgba(255,255,255,0.1); border-radius: 10px; position: relative;">
-                                                      <div style="width: 16px; height: 16px; background: white; border-radius: 50%; position: absolute; left: 2px; top: 2px;"></div>
-                                                  </div>
-                                              </div>
-                        </div>
-                        <div class="card glass">
-                                              <div class="card-title">Google Fit <i data-lucide="activity"></i></div>
-                                              <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
-                                                  <span>Import Data</span>
-                                                  <div style="width: 40px; height: 20px; background: rgba(255,255,255,0.1); border-radius: 10px; position: relative;">
-                                                      <div style="width: 16px; height: 16px; background: white; border-radius: 50%; position: absolute; left: 2px; top: 2px;"></div>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-                              </div>
-                          </main>
-                      </div>
-
-                      <!-- Goal Modal -->
-                      <div id="goal-modal" class="glass" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 400px; padding: 40px; z-index: 1000; box-shadow: 0 0 50px rgba(0,0,0,0.8);">
-                          <h2 class="glow-text" style="margin-bottom: 20px;">Set New Objective</h2>
-        <div style="display: flex; flex-direction: column; gap: 15px;">
-            <input type="text" placeholder="Objective name (e.g. 5am Bio-Sync)" style="background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); padding: 12px; border-radius: 8px; color: white;">
-                              <select style="background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); padding: 12px; border-radius: 8px; color: white;">
-                                  <option>Performance</option>
-                                  <option>Mindset</option>
-                                  <option>Consistency</option>
-                              </select>
-                              <button class="action-btn" style="background: var(--accent-cyan); color: #000;" onclick="toggleGoalModal()">INITIALIZE GOAL</button>
-                              <button class="action-btn" style="background: transparent; border: 1px solid var(--glass-border); color: white;" onclick="toggleGoalModal()">CANCEL</button>
-                          </div>
-                      </div>
-
-                      <!-- Scripts -->
-                      <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-                      <script src="scripts/main.js"></script>
-                      <script src="scripts/ar_hologram.js"></script>
-                      <script>
-                          lucide.createIcons();
-    </script>
-      </body>
-      </html>
-      
+            </main>main>
+    </div>
+    <script>
+              document.getElementById('login-btn').onclick = () => {
+                            document.getElementById('login-gate').style.display = 'none';
+                            document.getElementById('app').style.display = 'flex';
+              }
+                </script>
+</body>body>
+</html>html>
+    </script></h1></header></div></li></li></p></title>
+  </head>
