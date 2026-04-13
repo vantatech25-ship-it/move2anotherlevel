@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+      <title>MOVE Elite | 3.2 Dynamic Biosync</title>
+
+      <!-- Ultra-Luxe Typography -->
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+      <!-- Engine Dependencies -->
+      <script src="https://unpkg.com/lucide@latest"></script>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+      <link rel="stylesheet" href="styles/main.css">
+  </head>
+  <body class="system-initializing">
+      <!-- Induction Sequence Overlay -->
+      <div id="induction-overlay">
+          <div class="induction-container">
+              <div class="induction-progress">
+                  <div class="progress-bar" id="induction-pbar"></div>
+              </div>
+              <!-- Slide 1: Welcome -->
+              <div class="induction-slide active" data-slide="1">
+                  <div class="induction-content">
+                      <i data-lucide="shield-check" class="glow-icon" size="64"></i>
+                      <h1 class="titanium-text">MOVE ELITE 3.2</h1>
+                      <p class="aspirational-p">System initializing. Prepare for biosync protocol. Optimization parameters loading...</p>
+                  </div>
+              </div>
+
+              <!-- Slide 2: Archetype -->
+              <div class="induction-slide" data-slide="2">
+                  <div class="induction-content">
+                      <h1 class="titanium-text">SELECT ARCHETYPE</h1>
+                      <p class="aspirational-p" style="margin-bottom: 30px;">Choose your primary performance vector for system calibration.</p>
+                    <div class="archetype-grid">
+                        <div class="archetype-card" data-type="titan">
+                            <i data-lucide="zap"></i>
+                            <span>TITAN (STRENGTH)</span>
+                        </div>
+                          <div class="archetype-card" data-type="phantom">
+                              <i data-lucide="wind"></i>
+                              <span>PHANTOM (ENDURANCE)</span>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <!-- Slide 3: Final Sync -->
+              <div class="induction-slide" data-slide="3">
+                  <div class="induction-content">
+                    <h1 class="titanium-text">BIOSYNC ACTIVE</h1>
+                    <div class="final-sync-anim">
+                          <div class="pulse-ring"></div>
+                          <i data-lucide="fingerprint" class="glow-icon" size="80"></i>
+                      </div>
+                      <p class="aspirational-p">Encrypting bio-data. Link established. Welcome to the Elite tier.</p>
+                </div>
+              </div>
+
+            <div class="induction-controls">
+                <button class="skip-btn" id="induction-skip">INITIALIZE SYSTEM</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Application UI -->
+    <div id="app-container">
+          <header id="main-header">
+              <div class="brand-logo">
+                  <i data-lucide="activity" class="run-accent"></i>
+                  <span class="brand-name">MOVE<span class="run-accent">ELITE</span></span>
+              </div>
+
+              <div class="global-bio-hud" id="bio-hud">
+                  <i data-lucide="heart" class="bpm-icon"></i>
+                  <div class="bio-data">
+                      <span class="bpm-value" id="bpm-display">72</span>
+                      <span class="bpm-unit">BPM</span>
+                  </div>
+              </div>
+
+              <button class="scan-btn" id="scan-trigger">
+                  <i data-lucide="scan"></i>
+              </button>
+          </header>
+
+          <div class="insight-ticker">
+              <div class="ticker-content" id="insight-ticker-content">
+                  SYSTEM OPTIMIZED * VO2 MAX TRENDING +2% * RECOVERY WINDOW: 4H 12M * NEXT PROTOCOL: NEURAL CALM
+            </div>
+          </div>
+
+          <main id="view-port">
+              <section id="home-view" class="page-view active">
+                  <div class="hero-card">
+                      <div class="card-header">
+                          <span class="card-title">Readiness Score</span>
+                          <div class="prio-badge done">OPTIMAL</div>
+                      </div>
+                      <div class="card-val">94%</div>
+                  </div>
+                  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px;">
+                      <div class="elite-card">
+                          <div class="card-header">
+                              <span class="card-title">Activity</span>
+                          </div>
+                          <div class="card-val">2,840</div>
+                          <span class="macro-label">KCAL BURNED</span>
+                      </div>
+                      <div class="elite-card">
+                          <div class="card-header">
+                              <span class="card-title">Sleep</span>
+                          </div>
+                          <div class="card-val">8h 12m</div>
+                          <span class="macro-label">DEPTH: 88%</span>
+                      </div>
+                  </div>
+
+                  <div class="elite-card wide-card">
+                      <div class="card-header">
+                          <span class="card-title">Active Protocols</span>
+                      </div>
+                      <div class="protocol-item done">
+                          <div class="protocol-time">06:00</div>
+                          <div style="flex-grow: 1;">Hydration Load (500ml)</div>
+                          <i data-lucide="check-circle" size="16"></i>
+                      </div>
+                      <div class="protocol-item">
+                          <div class="protocol-time">14:00</div>
+                          <div style="flex-grow: 1;">Zonal Breath (10 min)</div>
+                          <div class="action-pill">START</div>
+                      </div>
+                  </div>
+              </section>
+          </main>
+
+          <nav class="bottom-nav">
+              <a href="#" class="nav-item active" data-view="home">
+                  <i data-lucide="home"></i>
+                  <span>HOME</span>
+              </a>
+              <a href="#" class="nav-item" data-view="stats">
+                  <i data-lucide="bar-chart-2"></i>
+                  <span>BIOSYNC</span>
+              </a>
+              <a href="#" class="nav-item" data-view="protocols">
+                  <i data-lucide="list"></i>
+                  <span>ELITE</span>
+              </a>
+              <a href="#" class="nav-item" data-view="settings">
+                  <i data-lucide="settings"></i>
+                  <span>CORE</span>
+              </a>
+          </nav>
+      </div>
+
+      <!-- System Dependencies -->
+      <script src="scripts/main.js"></script>
+      <script>
+          lucide.createIcons();
+    </script>
+      </body>
+      </html>
+      
