@@ -1,168 +1,634 @@
 <!DOCTYPE html>
-  <html lang="en">
-  <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-      <title>MOVE Elite | 3.2 Dynamic Biosync</title>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>MOVE | Elite Ecosystem 3.0</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <!-- System Activation FX Layer -->
+    <div class="system-activation-overlay"></div>
+    <div class="system-scanline"></div>
 
-      <!-- Ultra-Luxe Typography -->
-      <link rel="preconnect" href="https://fonts.googleapis.com">
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-      <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-      <!-- Engine Dependencies -->
-      <script src="https://unpkg.com/lucide@latest"></script>
-      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-      <link rel="stylesheet" href="styles/main.css">
-  </head>
-  <body class="system-initializing">
-      <!-- Induction Sequence Overlay -->
-      <div id="induction-overlay">
-          <div class="induction-container">
-              <div class="induction-progress">
-                  <div class="progress-bar" id="induction-pbar"></div>
-              </div>
-              <!-- Slide 1: Welcome -->
-              <div class="induction-slide active" data-slide="1">
-                  <div class="induction-content">
-                      <i data-lucide="shield-check" class="glow-icon" size="64"></i>
-                      <h1 class="titanium-text">MOVE ELITE 3.2</h1>
-                      <p class="aspirational-p">System initializing. Prepare for biosync protocol. Optimization parameters loading...</p>
-                  </div>
-              </div>
-
-              <!-- Slide 2: Archetype -->
-              <div class="induction-slide" data-slide="2">
-                  <div class="induction-content">
-                      <h1 class="titanium-text">SELECT ARCHETYPE</h1>
-                      <p class="aspirational-p" style="margin-bottom: 30px;">Choose your primary performance vector for system calibration.</p>
-                    <div class="archetype-grid">
-                        <div class="archetype-card" data-type="titan">
-                            <i data-lucide="zap"></i>
-                            <span>TITAN (STRENGTH)</span>
-                        </div>
-                          <div class="archetype-card" data-type="phantom">
-                              <i data-lucide="wind"></i>
-                              <span>PHANTOM (ENDURANCE)</span>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <!-- Slide 3: Final Sync -->
-              <div class="induction-slide" data-slide="3">
-                  <div class="induction-content">
-                    <h1 class="titanium-text">BIOSYNC ACTIVE</h1>
-                    <div class="final-sync-anim">
-                          <div class="pulse-ring"></div>
-                          <i data-lucide="fingerprint" class="glow-icon" size="80"></i>
-                      </div>
-                      <p class="aspirational-p">Encrypting bio-data. Link established. Welcome to the Elite tier.</p>
+    <!-- Cinematic MOVE Induction Experience -->
+    <div id="induction-overlay">
+        <div class="induction-container">
+            <div class="induction-progress">
+                <div class="progress-bar" id="induction-progress-bar"></div>
+            </div>
+            
+            <div class="induction-slide active" data-step="1">
+                <div class="induction-vignette"></div>
+                <div class="induction-content">
+                    <i data-lucide="activity" class="glow-icon" style="width: 80px; height: 80px;"></i>
+                    <h1 class="titanium-text">The Pathfinder Induction</h1>
+                    <p class="aspirational-p">Welcome to the Elite 0.1%. Your journey into human performance optimization begins now.</p>
+                    <button class="prio-btn induction-next">INITIALIZE INDUCTION</button>
                 </div>
-              </div>
+            </div>
+
+            <div class="induction-slide" data-step="2">
+                <div class="induction-content">
+                    <i data-lucide="zap" class="glow-icon"></i>
+                    <h2 class="titanium-text">The Readiness Hub</h2>
+                    <p class="aspirational-p">Daily biometric sync. HRV, Sleep, and Active metrics unified into a single coherence score.</p>
+                    <button class="prio-btn induction-next">SYNCHRONIZE CORE</button>
+                </div>
+            </div>
+
+            <div class="induction-slide" data-step="3">
+                <div class="induction-content">
+                    <i data-lucide="flame" class="glow-icon"></i>
+                    <h2 class="titanium-text">Precision Fueling</h2>
+                    <p class="aspirational-p">Automated macronutrient intelligence and precision supplement protocol management.</p>
+                    <button class="prio-btn induction-next">CALIBRATE FUEL</button>
+                </div>
+            </div>
+
+            <div class="induction-slide" data-step="4">
+                <div class="induction-content">
+                    <i data-lucide="activity" class="glow-icon"></i>
+                    <h2 class="titanium-text">Quantified Effort</h2>
+                    <p class="aspirational-p">From Elite Swimming to HIIT. Every stroke and movement analyzed for peak SWOLF efficiency.</p>
+                    <button class="prio-btn induction-next">PREPARE TRAINING</button>
+                </div>
+            </div>
+
+            <div class="induction-slide" data-step="5" id="archetype-step">
+                <div class="induction-content">
+                    <i data-lucide="user-plus" class="glow-icon"></i>
+                    <h2 class="titanium-text">Select Your Archetype</h2>
+                    <p class="aspirational-p">Calibrate the ecosystem to your specific performance goals.</p>
+                    <div class="archetype-grid">
+                        <div class="archetype-card" data-archetype="bio-hacker">
+                            <i data-lucide="cpu"></i>
+                            <span>BIO-HACKER</span>
+                        </div>
+                        <div class="archetype-card" data-archetype="elite-athlete">
+                            <i data-lucide="award"></i>
+                            <span>ELITE ATHLETE</span>
+                        </div>
+                        <div class="archetype-card" data-archetype="longevity">
+                            <i data-lucide="infinity"></i>
+                            <span>LONGEVITY</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="induction-slide" data-step="6">
+                <div class="induction-content">
+                    <div class="final-sync-anim">
+                        <div class="pulse-ring"></div>
+                        <i data-lucide="shield-check" class="glow-icon" style="width: 100px; height: 100px;"></i>
+                    </div>
+                    <h2 class="titanium-text">System Activation</h2>
+                    <p class="aspirational-p">Biometric vault secured. Neural privacy active. You are ready to MOVE.</p>
+                    <button class="prio-btn" id="finish-induction">PROCEED TO ECOSYSTEM</button>
+                </div>
+            </div>
 
             <div class="induction-controls">
-                <button class="skip-btn" id="induction-skip">INITIALIZE SYSTEM</button>
+                <button class="skip-btn" id="skip-induction">SKIP INDUCTION</button>
             </div>
         </div>
     </div>
 
-    <!-- Main Application UI -->
-    <div id="app-container">
-          <header id="main-header">
-              <div class="brand-logo">
-                  <i data-lucide="activity" class="run-accent"></i>
-                  <span class="brand-name">MOVE<span class="run-accent">ELITE</span></span>
-              </div>
-
-              <div class="global-bio-hud" id="bio-hud">
-                  <i data-lucide="heart" class="bpm-icon"></i>
-                  <div class="bio-data">
-                      <span class="bpm-value" id="bpm-display">72</span>
-                      <span class="bpm-unit">BPM</span>
-                  </div>
-              </div>
-
-              <button class="scan-btn" id="scan-trigger">
-                  <i data-lucide="scan"></i>
-              </button>
-          </header>
-
-          <div class="insight-ticker">
-              <div class="ticker-content" id="insight-ticker-content">
-                  SYSTEM OPTIMIZED * VO2 MAX TRENDING +2% * RECOVERY WINDOW: 4H 12M * NEXT PROTOCOL: NEURAL CALM
+    <!-- High-Tech Biometric Scanner Overlay -->
+    <div id="bio-scan-overlay" class="holographic-overlay">
+        <div class="scan-grid"></div>
+        <div class="scan-laser"></div>
+        <div class="scan-frame">
+            <div class="corner tl"></div>
+            <div class="corner tr"></div>
+            <div class="corner bl"></div>
+            <div class="corner br"></div>
+        </div>
+        <div class="scan-data">
+            <div class="data-block">
+                <span class="label">NEURAL SYNC</span>
+                <span class="value" id="scan-neural">CALIBRATING...</span>
             </div>
-          </div>
+            <div class="data-block">
+                <span class="label">VITAL FLOW</span>
+                <span class="value" id="scan-vital">ANALYSING...</span>
+            </div>
+            <div class="data-block">
+                <span class="label">CORE TEMP</span>
+                <span class="value" id="scan-temp">36.5°C</span>
+            </div>
+        </div>
+        <div class="scan-status">SYSTEM AUTHORIZATION REQUIRED</div>
+    </div>
 
-          <main id="view-port">
-              <section id="home-view" class="page-view active">
-                  <div class="hero-card">
-                      <div class="card-header">
-                          <span class="card-title">Readiness Score</span>
-                          <div class="prio-badge done">OPTIMAL</div>
-                      </div>
-                      <div class="card-val">94%</div>
-                  </div>
-                  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px;">
-                      <div class="elite-card">
-                          <div class="card-header">
-                              <span class="card-title">Activity</span>
-                          </div>
-                          <div class="card-val">2,840</div>
-                          <span class="macro-label">KCAL BURNED</span>
-                      </div>
-                      <div class="elite-card">
-                          <div class="card-header">
-                              <span class="card-title">Sleep</span>
-                          </div>
-                          <div class="card-val">8h 12m</div>
-                          <span class="macro-label">DEPTH: 88%</span>
-                      </div>
-                  </div>
+    <!-- Deep Biometric Analysis Modal -->
+    <div id="deep-analysis-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="close-modal" id="close-analysis-modal"><i data-lucide="x"></i></button>
+            <h2 class="titanium-text" style="font-size: 1.5rem; margin-bottom: 20px;">Biometric Deep Dive</h2>
+            <div class="analysis-grid">
+                <div class="analysis-card">
+                    <span class="card-title">HRV Coherence</span>
+                    <div class="analysis-visual">
+                        <canvas id="hrvChart"></canvas>
+                    </div>
+                </div>
+                <div class="analysis-card">
+                    <span class="card-title">Metabolic Phase</span>
+                    <div class="phase-meter">
+                        <div class="meter-fill" style="width: 82%;"></div>
+                    </div>
+                    <span class="meter-label">Ketogenic State: High Efficiency</span>
+                </div>
+            </div>
+            <div class="ai-recommendation">
+                <i data-lucide="brain" style="width: 24px; color: var(--accent-primary);"></i>
+                <p>Based on your current HRV (112ms) and sleep quality (94%), we recommend a **High-Intensity Power Session** followed by 400mg Magnesium L-Threonate.</p>
+            </div>
+        </div>
+    </div>
 
-                  <div class="elite-card wide-card">
-                      <div class="card-header">
-                          <span class="card-title">Active Protocols</span>
-                      </div>
-                      <div class="protocol-item done">
-                          <div class="protocol-time">06:00</div>
-                          <div style="flex-grow: 1;">Hydration Load (500ml)</div>
-                          <i data-lucide="check-circle" size="16"></i>
-                      </div>
-                      <div class="protocol-item">
-                          <div class="protocol-time">14:00</div>
-                          <div style="flex-grow: 1;">Zonal Breath (10 min)</div>
-                          <div class="action-pill">START</div>
-                      </div>
-                  </div>
-              </section>
-          </main>
 
-          <nav class="bottom-nav">
-              <a href="#" class="nav-item active" data-view="home">
-                  <i data-lucide="home"></i>
-                  <span>HOME</span>
-              </a>
-              <a href="#" class="nav-item" data-view="stats">
-                  <i data-lucide="bar-chart-2"></i>
-                  <span>BIOSYNC</span>
-              </a>
-              <a href="#" class="nav-item" data-view="protocols">
-                  <i data-lucide="list"></i>
-                  <span>ELITE</span>
-              </a>
-              <a href="#" class="nav-item" data-view="settings">
-                  <i data-lucide="settings"></i>
-                  <span>CORE</span>
-              </a>
-          </nav>
-      </div>
+    <!-- Luxury Splash Screen (Moved after Induction) -->
+    <div id="splash-screen">
+        <div class="splash-content">
+            <div class="splash-logo">
+                <i data-lucide="activity" style="width: 50px; height: 50px; color: var(--accent-primary);"></i>
+                <span class="brand-name">MOVE</span>
+            </div>
+            <div class="splash-bar"></div>
+        </div>
+    </div>
 
-      <!-- System Dependencies -->
-      <script src="scripts/main.js"></script>
-      <script>
-          lucide.createIcons();
+    <div id="app-container">
+        <!-- Titanium Header -->
+        <header id="main-header">
+            <div class="brand-logo">
+                <i data-lucide="activity" style="color: var(--accent-primary); width: 28px; height: 28px;"></i>
+                <span class="brand-name">MOVE</span>
+            </div>
+            
+            <!-- Global Biometric HUD -->
+            <div class="global-bio-hud" id="global-bpm-widget">
+                <i data-lucide="heart" class="bpm-icon"></i>
+                <span class="bpm-value" id="global-bpm-val">72</span>
+                <span class="bpm-unit">BPM</span>
+                <!-- Bio-Pulse Wave (ECG Style) -->
+                <div class="bio-wave-container">
+                    <svg viewBox="0 0 60 20" preserveAspectRatio="none" style="width: 100%; height: 100%;">
+                        <path class="bio-wave" d="M0,10 L10,10 L12,2 L14,18 L16,10 L20,10 L30,10 L32,5 L34,15 L36,10 L40,10 L50,10 L52,2 L54,18 L56,10 L60,10" />
+                    </svg>
+                </div>
+            </div>
+
+            <button class="scan-btn" id="bio-scan-trigger">
+                <i data-lucide="scan-eye"></i>
+            </button>
+        </header>
+
+        <!-- AI Performance Feed -->
+        <div class="insight-ticker">
+            <div class="ticker-content" id="ai-ticker">
+                SYNCING BIOMETRIC CORE... // HRV: 112ms // METABOLIC FLEXIBILITY: ELITE // NEXT SUPPLEMENT WINDOW: 08:30
+            </div>
+        </div>
+
+        <main id="main-content">
+            
+            <!-- HUB 1: READINESS -->
+            <section id="tab-readiness" class="page-view active">
+                <div class="hero-card bio-pulse">
+                    <div class="bio-ring-container">
+                        <svg class="bio-ring-svg" viewBox="0 0 100 100">
+                            <!-- Background Circles -->
+                            <circle cx="50" cy="50" r="45" fill="none" stroke="var(--border)" stroke-width="6"/>
+                            <circle cx="50" cy="50" r="37" fill="none" stroke="var(--border)" stroke-width="6"/>
+                            <circle cx="50" cy="50" r="29" fill="none" stroke="var(--border)" stroke-width="6"/>
+                            <!-- Progress Rings -->
+                            <circle id="ring-hrv" cx="50" cy="50" r="45" fill="none" stroke="var(--accent-recovery)" stroke-width="6" stroke-dasharray="282.7" stroke-dashoffset="40" stroke-linecap="round"/>
+                            <circle id="ring-sleep" cx="50" cy="50" r="37" fill="none" stroke="var(--accent-sleep)" stroke-width="6" stroke-dasharray="232.5" stroke-dashoffset="60" stroke-linecap="round"/>
+                            <circle id="ring-activity" cx="50" cy="50" r="29" fill="none" stroke="var(--accent-active)" stroke-width="6" stroke-dasharray="182.2" stroke-dashoffset="80" stroke-linecap="round"/>
+                        </svg>
+                        <div class="readiness-score">
+                            <span class="readiness-val" id="readiness-val">96</span>
+                            <span style="font-size: 0.6rem; font-weight: 900; color: var(--accent-primary); letter-spacing: 2px;">MOVE INDEX</span>
+                            <span class="readiness-label">ELITE</span>
+                        </div>
+                    </div>
+                    <button class="prio-btn" id="deep-dive-btn">DEEP BIOMETRIC ANALYSIS</button>
+                </div>
+
+                <div class="card-grid">
+                    <div class="elite-card bio-pulse">
+                        <div class="card-header">
+                            <span class="card-title">VO2 Max</span>
+                            <i data-lucide="zap" style="color: var(--accent-active); width: 16px;"></i>
+                        </div>
+                        <div class="card-val" id="val-vo2">58.4</div>
+                        <div class="sparkline-container">
+                            <svg viewBox="0 0 100 30" style="width: 100%; height: 20px;">
+                                <path d="M0,15 L10,12 L20,18 L30,10 L40,14 L50,8 L60,12 L70,5 L80,10 L90,12 L100,2" fill="none" stroke="var(--accent-active)" stroke-width="2"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="elite-card bio-pulse">
+                        <div class="card-header">
+                            <span class="card-title">SpO2</span>
+                            <i data-lucide="droplets" style="color: var(--accent-calories); width: 16px;"></i>
+                        </div>
+                        <div class="card-val" id="val-spo2">99.8%</div>
+                        <div class="sparkline-container">
+                            <svg viewBox="0 0 100 30" style="width: 100%; height: 20px;">
+                                <path d="M0,5 L20,4 L40,5 L60,4 L80,5 L100,4" fill="none" stroke="var(--accent-calories)" stroke-width="2"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="elite-card wide-card bio-pulse body-map-card">
+                        <div class="card-header">
+                            <span class="card-title">Bio-Resonance Map</span>
+                            <span style="font-size: 0.65rem; color: var(--accent-recovery); font-weight: 800;">HRV: 112ms</span>
+                        </div>
+                        <div class="body-map-container">
+                            <svg viewBox="0 0 100 200" style="height: 100%;">
+                                <path d="M50,10 C55,10 60,15 60,20 C60,25 55,30 50,30 C45,30 40,25 40,20 C40,15 45,10 50,10 M50,30 L50,40 M30,50 L70,50 L65,100 L75,180 L65,180 L55,120 L50,120 L45,120 L35,180 L25,180 L35,100 L30,50" fill="var(--surface-tertiary)" stroke="var(--border)" stroke-width="1.5"/>
+                                <circle cx="50" cy="80" r="18" fill="var(--accent-recovery)" opacity="0.3">
+                                    <animate attributeName="opacity" values="0.1;0.4;0.1" dur="4s" repeatCount="indefinite" />
+                                </circle>
+                                <circle cx="42" cy="140" r="12" fill="var(--accent-active)" opacity="0.2"/>
+                            </svg>
+                        </div>
+                        <p style="font-size: 0.7rem; color: var(--text-secondary);">Optimal recovery detected. Precision HIIT session recommended.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- HUB 2: FUEL & STACK -->
+            <section id="tab-fuel" class="page-view">
+                <div class="elite-card wide-card bio-pulse">
+                    <div class="card-header">
+                        <span class="card-title">Macronutrient Intake</span>
+                        <span style="font-size: 0.65rem; font-weight: 800; color: var(--accent-fuel);">2,842 KCAL</span>
+                    </div>
+                    <div class="macro-ring-container">
+                        <div class="macro-item">
+                            <svg width="60" height="60" viewBox="0 0 60 60">
+                                <circle cx="30" cy="30" r="26" fill="none" stroke="var(--border)" stroke-width="4"/>
+                                <circle cx="30" cy="30" r="26" fill="none" stroke="var(--accent-active)" stroke-width="4" stroke-dasharray="163" stroke-dashoffset="30" stroke-linecap="round"/>
+                            </svg>
+                            <div class="macro-label">PROTEIN</div>
+                        </div>
+                        <div class="macro-item">
+                            <svg width="60" height="60" viewBox="0 0 60 60">
+                                <circle cx="30" cy="30" r="26" fill="none" stroke="var(--border)" stroke-width="4"/>
+                                <circle cx="30" cy="30" r="26" fill="none" stroke="var(--accent-calories)" stroke-width="4" stroke-dasharray="163" stroke-dashoffset="60" stroke-linecap="round"/>
+                            </svg>
+                            <div class="macro-label">CARBS</div>
+                        </div>
+                        <div class="macro-item">
+                            <svg width="60" height="60" viewBox="0 0 60 60">
+                                <circle cx="30" cy="30" r="26" fill="none" stroke="var(--border)" stroke-width="4"/>
+                                <circle cx="30" cy="30" r="26" fill="none" stroke="var(--accent-energy)" stroke-width="4" stroke-dasharray="163" stroke-dashoffset="100" stroke-linecap="round"/>
+                            </svg>
+                            <div class="macro-label">FATS</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="elite-card wide-card" style="margin-top: 16px;">
+                    <div class="card-header">
+                        <span class="card-title">Intermittent Fasting</span>
+                        <span class="protocol-time">14:52:12</span>
+                    </div>
+                    <div style="padding: 10px 0;">
+                        <p style="font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 12px;">State: **Metabolic Transition** (Fats burning)</p>
+                        <div style="height: 8px; background: var(--surface-tertiary); border-radius: 4px; overflow: hidden;">
+                            <div style="width: 78%; height: 100%; background: var(--accent-fuel); box-shadow: 0 0 10px var(--accent-fuel);"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 style="margin: 24px 0 16px; font-size: 0.9rem; font-weight: 900; letter-spacing: 1px;">SUPPLEMENT PROTOCOL</h3>
+                <div id="supplement-stack">
+                    <div class="protocol-item">
+                        <i data-lucide="check-circle" style="color: var(--accent-steps); width: 18px;"></i>
+                        <div style="flex: 1;">
+                            <div style="font-weight: 700; font-size: 0.85rem;">Omega-3 + Vitamin D</div>
+                            <div class="protocol-time">MORNING STACK</div>
+                        </div>
+                    </div>
+                    <div class="protocol-item">
+                        <i data-lucide="circle" style="color: var(--text-tertiary); width: 18px;"></i>
+                        <div style="flex: 1;">
+                            <div style="font-weight: 700; font-size: 0.85rem;">NMN + Reservatrol</div>
+                            <div class="protocol-time">PRE-WORKOUT</div>
+                        </div>
+                    </div>
+                    <div class="protocol-item">
+                        <i data-lucide="circle" style="color: var(--text-tertiary); width: 18px;"></i>
+                        <div style="flex: 1;">
+                            <div style="font-weight: 700; font-size: 0.85rem;">Magnesium L-Threonate</div>
+                            <div class="protocol-time">SLEEP SUPPORT</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- HUB 3: NEURAL & MINDSET -->
+            <section id="tab-neural" class="page-view">
+                <div class="hero-card bio-pulse" id="neural-hero" style="background: radial-gradient(circle at top right, rgba(191, 90, 242, 0.1), transparent), var(--surface);">
+                    <div style="display: flex; justify-content: space-between;">
+                        <span style="font-size: 0.65rem; font-weight: 900; color: var(--accent-recovery); letter-spacing: 2px;">NEURAL COHERENCE ACTIVE</span>
+                        <i data-lucide="brain" style="color: var(--accent-recovery); width: 20px;"></i>
+                    </div>
+                    <div class="neural-score-container">
+                        <div class="calibration-pulse"></div>
+                        <div class="neural-val" id="neural-coherence-val">88</div>
+                        <div class="neural-label">COHERENT</div>
+                    </div>
+                    <p style="color: var(--text-secondary); margin-bottom: 24px; font-size: 0.8rem;">Your cognitive resilience is peaking. Optimal window for deep strategic work identified.</p>
+                    <button class="prio-btn" id="start-calibration" style="background: var(--accent-recovery); color: white;">INITIALIZE CALIBRATION</button>
+                </div>
+
+                <div class="card-grid">
+                    <div class="elite-card">
+                        <div class="card-header">
+                            <span class="card-title">Cognitive Load</span>
+                            <i data-lucide="cpu" style="color: var(--accent-primary); width: 16px;"></i>
+                        </div>
+                        <div class="card-val">LOW</div>
+                        <div style="font-size: 0.65rem; color: var(--text-secondary); margin-top: 5px;">Bandwidth: 92% free</div>
+                    </div>
+                    <div class="elite-card">
+                        <div class="card-header">
+                            <span class="card-title">Cortisol Sync</span>
+                            <i data-lucide="thermometer" style="color: var(--accent-active); width: 16px;"></i>
+                        </div>
+                        <div class="card-val">Optimal</div>
+                        <div style="font-size: 0.65rem; color: var(--text-secondary); margin-top: 5px;">Aligned at 08:30</div>
+                    </div>
+                    <div class="elite-card wide-card">
+                        <div class="card-header">
+                            <span class="card-title">Neural Resilience (24H)</span>
+                        </div>
+                        <div style="height: 140px; margin-top: 10px;">
+                            <canvas id="resilienceChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 style="margin: 24px 0 16px; font-size: 0.9rem; font-weight: 900; letter-spacing: 1px;">FOCUS PROTOCOLS</h3>
+                <div class="protocol-item">
+                    <i data-lucide="wind" style="color: var(--accent-recovery); width: 18px;"></i>
+                    <div style="flex: 1;">
+                        <div style="font-weight: 700; font-size: 0.85rem;">Box Breathing (Tactical)</div>
+                        <div class="protocol-time">4 MINS • STRESS MITIGATION</div>
+                    </div>
+                    <i data-lucide="play-circle" style="width: 20px; opacity: 0.5;"></i>
+                </div>
+                <div class="protocol-item">
+                    <i data-lucide="binary" style="color: var(--accent-primary); width: 18px;"></i>
+                    <div style="flex: 1;">
+                        <div style="font-weight: 700; font-size: 0.85rem;">Neural Priming</div>
+                        <div class="protocol-time">10 MINS • COGNITIVE UPRIGHT</div>
+                    </div>
+                    <i data-lucide="play-circle" style="width: 20px; opacity: 0.5;"></i>
+                </div>
+            </section>
+
+            <!-- HUB 4: TRAINING & SWIMMING -->
+            <section id="tab-training" class="page-view">
+                <div class="hero-card bio-pulse" style="background: radial-gradient(circle at top right, rgba(100, 210, 255, 0.1), transparent), var(--surface);">
+                    <div style="display: flex; justify-content: space-between;">
+                        <span style="font-size: 0.65rem; font-weight: 900; color: var(--accent-calories); letter-spacing: 2px;">SWIM ENGINE ACTIVE</span>
+                        <i data-lucide="waves" style="color: var(--accent-calories); width: 20px;"></i>
+                    </div>
+                    <h2 style="font-size: 2rem; margin: 12px 0;">Elite Swim Session</h2>
+                    <p style="color: var(--text-secondary); margin-bottom: 24px; font-size: 0.8rem;">Strokes, SWOLF, and Heart Rate optimization in a precision environment.</p>
+                    <button class="prio-btn" id="start-swim" style="background: var(--accent-calories); color: black;">INITIALIZE LAPS</button>
+                </div>
+
+                <!-- Swim Player (Hidden) -->
+                <div id="swim-player" style="display: none; margin-top: 24px;">
+                    <div class="elite-card wide-card bio-pulse" style="border-color: var(--accent-calories);">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+                            <div>
+                                <div id="swim-timer" style="font-size: 3rem; font-weight: 900; font-variant-numeric: tabular-nums;">00:00</div>
+                                <div style="font-weight: 800; color: var(--accent-calories); font-size: 0.7rem;">ELITE FREESTYLE</div>
+                            </div>
+                            <div style="text-align: right;">
+                                <div id="swim-laps" style="font-size: 2rem; font-weight: 900;">12</div>
+                                <div style="font-size: 0.6rem; opacity: 0.5;">LAPS (300M)</div>
+                            </div>
+                        </div>
+                        <div style="display: flex; gap: 12px; margin-bottom: 20px;">
+                            <div style="flex: 1; background: var(--surface-secondary); padding: 12px; border-radius: 12px; text-align: center;">
+                                <div style="font-weight: 900; font-size: 1.2rem;" id="swim-swolf">38</div>
+                                <div style="font-size: 0.6rem; opacity: 0.5;">SWOLF</div>
+                            </div>
+                            <div style="flex: 1; background: var(--surface-secondary); padding: 12px; border-radius: 12px; text-align: center;">
+                                <div style="font-weight: 900; font-size: 1.2rem;">142</div>
+                                <div style="font-size: 0.6rem; opacity: 0.5;">BPM</div>
+                            </div>
+                        </div>
+                        <button class="secondary-btn" id="stop-swim">END SESSION</button>
+                    </div>
+                </div>
+
+                <div class="hero-card bio-pulse" style="background: radial-gradient(circle at top right, rgba(255, 214, 10, 0.1), transparent), var(--surface); margin-top: 16px;">
+                    <div style="display: flex; justify-content: space-between;">
+                        <span style="font-size: 0.65rem; font-weight: 900; color: var(--accent-energy); letter-spacing: 2px;">RUN ENGINE ACTIVE</span>
+                        <i data-lucide="timer" style="color: var(--accent-energy); width: 20px;"></i>
+                    </div>
+                    <h2 style="font-size: 2rem; margin: 12px 0;">Elite Run Session</h2>
+                    <p style="color: var(--text-secondary); margin-bottom: 24px; font-size: 0.8rem;">Speed, Cadence, and Elevation gain in a high-velocity environment.</p>
+                    <button class="prio-btn" id="start-run" style="background: var(--accent-energy); color: black;">INITIALIZE PACE</button>
+                </div>
+
+                <!-- Run Player (Hidden) -->
+                <div id="run-player" style="display: none; margin-top: 24px;">
+                    <div class="elite-card wide-card bio-pulse" style="border-color: var(--accent-energy);">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+                            <div>
+                                <div id="run-timer" style="font-size: 3rem; font-weight: 900; font-variant-numeric: tabular-nums;">00:00</div>
+                                <div style="font-weight: 800; color: var(--accent-energy); font-size: 0.7rem;">ELITE VELOCITY</div>
+                            </div>
+                            <div style="text-align: right;">
+                                <div id="run-speed" style="font-size: 2rem; font-weight: 900;">12.4</div>
+                                <div style="font-size: 0.6rem; opacity: 0.5;">KM / H</div>
+                            </div>
+                        </div>
+                        <div style="display: flex; gap: 12px; margin-bottom: 20px;">
+                            <div style="flex: 1; background: var(--surface-secondary); padding: 12px; border-radius: 12px; text-align: center;">
+                                <div style="font-weight: 900; font-size: 1.2rem;" id="run-cadence">172</div>
+                                <div style="font-size: 0.6rem; opacity: 0.5;">SPM (CADENCE)</div>
+                            </div>
+                            <div style="flex: 1; background: var(--surface-secondary); padding: 12px; border-radius: 12px; text-align: center;">
+                                <div style="font-weight: 900; font-size: 1.2rem;" id="run-ele-gain">+42m</div>
+                                <div style="font-size: 0.6rem; opacity: 0.5;">ELE GAIN</div>
+                            </div>
+                        </div>
+                        <div class="hr-zone-strip">
+                            <div class="zone active" style="flex: 1.2; background: var(--accent-steps);">AEROBIC</div>
+                            <div class="zone" style="flex: 1; background: var(--accent-energy);">THRESHOLD</div>
+                            <div class="zone" style="flex: 0.8; background: var(--accent-active);">VO2 MAX</div>
+                        </div>
+                        <div class="elevation-graph">
+                            <svg viewBox="0 0 400 50" preserveAspectRatio="none" style="width: 100%; height: 100%;">
+                                <path id="elevation-path" d="M0,50 L50,45 L100,48 L150,30 L200,35 L250,15 L300,20 L350,5 L400,10 L400,50 Z" fill="rgba(255, 214, 10, 0.1)" stroke="var(--accent-energy)" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <button class="secondary-btn" id="stop-run" style="margin-top: 20px;">END SESSION</button>
+                    </div>
+                </div>
+
+                <h3 style="margin: 24px 0 16px; font-size: 0.9rem; font-weight: 900; letter-spacing: 1px;">TRAINING HUB</h3>
+                <div class="card-grid">
+                    <div class="elite-card" style="border-color: rgba(48, 209, 88, 0.1);">
+                        <div class="card-header">
+                            <span class="card-title">HIIT Blast</span>
+                            <i data-lucide="flame" style="color: var(--accent-steps); width: 16px;"></i>
+                        </div>
+                        <div style="font-size: 0.7rem; color: var(--text-secondary); margin-top: 8px;">18 Mins • Precision Output</div>
+                    </div>
+                    <div class="elite-card" style="border-color: rgba(191, 90, 242, 0.1);">
+                        <div class="card-header">
+                            <span class="card-title">Bio-Sync Yoga</span>
+                            <i data-lucide="wind" style="color: var(--accent-recovery); width: 16px;"></i>
+                        </div>
+                        <div style="font-size: 0.7rem; color: var(--text-secondary); margin-top: 8px;">45 Mins • Recovery Focus</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- HUB 4: NETWORK -->
+            <section id="tab-network" class="page-view">
+                <div class="elite-card wide-card bio-pulse">
+                    <div class="card-header">
+                        <span class="card-title">Global Pathfinder Network</span>
+                        <span class="action-pill">TITANIUM SEASON</span>
+                    </div>
+                    <div id="leaderboard-list" style="margin-top: 20px;">
+                        <div class="protocol-item" style="border-left: 4px solid var(--accent-energy);">
+                            <span style="font-weight: 900; color: var(--accent-energy); width: 20px;">1</span>
+                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Elite1" style="width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--accent-energy); margin: 0 12px;">
+                            <div style="flex: 1;">
+                                <div style="font-weight: 800; font-size: 0.85rem;">Marcus Aurelius</div>
+                                <div style="font-size: 0.65rem; color: var(--text-secondary);">LEGENDARY • 4.8M XP</div>
+                            </div>
+                            <div style="text-align: right; font-weight: 900;">99.2</div>
+                        </div>
+                        <div class="protocol-item" style="border-left: 4px solid var(--accent-primary); background: rgba(0, 113, 227, 0.05);">
+                            <span style="font-weight: 900; color: var(--text-primary); width: 20px;">42</span>
+                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Ivan" style="width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--accent-primary); margin: 0 12px;">
+                            <div style="flex: 1;">
+                                <div style="font-weight: 800; font-size: 0.85rem;">You (Ivan)</div>
+                                <div style="font-size: 0.65rem; color: var(--text-secondary);">RISING TITAN • 982k XP</div>
+                            </div>
+                            <div style="text-align: right; font-weight: 900; color: var(--accent-primary);">96.4</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- HUB 5: IDENTITY -->
+            <section id="tab-identity" class="page-view">
+                <div style="text-align: center; padding: 40px 0;">
+                    <div style="position: relative; width: 110px; height: 110px; margin: 0 auto 24px;">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Ivan" style="width: 100%; border-radius: 50%; border: 4px solid var(--surface-tertiary);">
+                        <div style="position: absolute; bottom: 0; right: 0; width: 34px; height: 34px; background: var(--accent-energy); border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 4px solid var(--bg);">
+                            <i data-lucide="shield-check" style="width: 16px; color: black;"></i>
+                        </div>
+                    </div>
+                    <h2 style="font-size: 1.8rem; font-weight: 900; letter-spacing: -1px;">Ivan Pathfinder</h2>
+                    <p style="color: var(--text-secondary); margin-top: 4px; font-weight: 600;">TITANIUM ELITE • LVL 42</p>
+                </div>
+
+                <div class="elite-card wide-card bio-pulse">
+                    <div class="card-header">
+                        <span class="card-title">Biometric Vault</span>
+                        <i data-lucide="chevron-right" style="width: 16px; opacity: 0.4;"></i>
+                    </div>
+                    <div style="height: 120px; margin-top: 15px;">
+                        <canvas id="vaultChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="elite-card wide-card" style="margin-top: 16px; padding: 10px 24px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 18px 0; border-bottom: 1px solid var(--border);">
+                        <div style="display: flex; align-items: center; gap: 12px;">
+                            <i data-lucide="lock" style="color: var(--accent-steps); width: 18px;"></i>
+                            <span style="font-weight: 600;">Neural Privacy</span>
+                        </div>
+                        <span style="font-size: 0.65rem; color: var(--accent-steps); font-weight: 900;">ENCRYPTED</span>
+                    </div>
+                </div>
+
+                <div class="elite-card wide-card" style="margin-top: 16px;">
+                    <div class="card-header">
+                        <span class="card-title">Biometric Sync Hub</span>
+                    </div>
+                    <div class="sync-hub-grid">
+                        <div class="sync-item linked">
+                            <i data-lucide="apple" style="color: #fff;"></i>
+                            <span>APPLE HEALTH</span>
+                            <span class="sync-status">LINKED</span>
+                        </div>
+                        <div class="sync-item linked">
+                            <i data-lucide="activity" style="color: #4285F4;"></i>
+                            <span>GOOGLE FIT</span>
+                            <span class="sync-status">LINKED</span>
+                        </div>
+                        <div class="sync-item">
+                            <i data-lucide="command" style="color: var(--accent-primary);"></i>
+                            <span>KHOI SYNC</span>
+                            <span class="sync-status">CONNECTING...</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Elite 5-Tab Navigation -->
+        <nav class="bottom-nav">
+            <a href="#" class="nav-item active" data-tab="readiness">
+                <i data-lucide="zap"></i>
+                <span>READINESS</span>
+            </a>
+            <a href="#" class="nav-item" data-tab="fuel">
+                <i data-lucide="flame"></i>
+                <span>FUEL</span>
+            </a>
+            <a href="#" class="nav-item" data-tab="neural">
+                <i data-lucide="brain"></i>
+                <span>NEURAL</span>
+            </a>
+            <a href="#" class="nav-item" data-tab="training">
+                <i data-lucide="activity"></i>
+                <span>TRAINING</span>
+            </a>
+            <a href="#" class="nav-item" data-tab="network">
+                <i data-lucide="globe"></i>
+                <span>NETWORK</span>
+            </a>
+            <a href="#" class="nav-item" data-tab="identity">
+                <i data-lucide="user"></i>
+                <span>IDENTITY</span>
+            </a>
+        </nav>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="scripts/main.js"></script>
+    <script>
+        lucide.createIcons();
     </script>
-      </body>
-      </html>
-      
+</body>
+</html>
