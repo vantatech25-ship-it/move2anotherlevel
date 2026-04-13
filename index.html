@@ -2,114 +2,99 @@
 <html lang="en">
   <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>MOVE | Next-Gen Wellness Platform</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+        <title>MOVE Elite | 3.2 Dynamic Biosync</title>
+      
+      <!-- Ultra-Luxe Typography -->
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-      <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+      
+      <!-- Engine Dependencies -->
       <script src="https://unpkg.com/lucide@latest"></script>
       <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
       <link rel="stylesheet" href="styles/main.css">
   </head>
-<body>
-      <div id="login-gate">
-                <div class="login-panel">
-                              <div class="logo" style="justify-content: center; margin-bottom: 30px;">
-                                                <i data-lucide="activity"></i>i>
-                                                MOVE
-                              </div>div>
-                              <div class="scan-ring">
-                                                <i data-lucide="fingerprint" style="width: 48px; height: 48px; color: var(--accent-cyan);"></i>i>
-                              </div>div>
-                              <h2 class="glow-text">System Locked</h2>h2>
-                              <p style="color: var(--text-secondary); margin-top: 10px; font-size: 0.9rem;">PLACE FINGER TO INITIALIZE</p>p>
-                              <div class="login-status">WAITING FOR BIOMETRICS...</div>div>
-                              <button id="init-scan" class="action-btn" style="margin-top: 30px; width: 100%;">INTIATE SCAN</button>button>
-                </div>div>
-      </div>div>
+<body class="system-initializing">
+    <!-- Induction Sequence Overlay -->
+    <div id="induction-overlay">
+            <div class="induction-container">
+                        <div class="induction-progress">
+                                        <div class="progress-bar" id="induction-pbar"></div>div>
+                        </div>div>
+                        
+                        <!-- Slide 1: Welcome -->
+                        <div class="induction-slide active" data-slide="1">
+                                        <div class="induction-content">
+                                                            <i data-lucide="shield-check" class="glow-icon" size="64"></i>i>
+                                                            <h1 class="titanium-text">MOVE ELITE 3.2</h1>h1>
+                                                            <p class="aspirational-p">System initializing. Prepare for biosync protocol. Optimization parameters loading...</p>p>
+                                        </div>div>
+                        </div>div>
+            
+                        <!-- Slide 2: Archetype -->
+                        <div class="induction-slide" data-slide="2">
+                                        <div class="induction-content">
+                                                            <h1 class="titanium-text">SELECT ARCHETYPE</h1>h1>
+                                                            <p class="aspirational-p" style="margin-bottom: 30px;">Choose your primary performance vector for system calibration.</p>p>
+                                                            <div class="archetype-grid">
+                                                                                    <div class="archetype-card" data-type="titan">
+                                                                                                                <i data-lucide="zap"></i>i>
+                                                                                                                <span>TITAN (STRENGTH)</span>
+                                                                                      </div>div>
+                                                                                    <div class="archetype-card" data-type="phantom">
+                                                                                                                <i data-lucide="wind"></i>i>
+                                                                                                                <span>PHANTOM (ENDURANCE)</span>
+                                                                                      </div>div>
+                                                            </div>div>
+                                        </div>div>
+                        </div>div>
+            </span></span></title>
+  </head>            <!-- Slide 3: Final Sync -->
+                          <div class="induction-slide" data-slide="3">
+                                            <div class="induction-content">
+                                                                  <h1 class="titanium-text">BIOSYNC ACTIVE</h1>h1>
+                                                                  <div class="final-sync-anim">
+                                                                                            <div class="pulse-ring"></div>div>
+                                                                                            <i data-lucide="fingerprint" class="glow-icon" size="80"></i>i>
+                                                                  </div>div>
+                                                                  <p class="aspirational-p">Encrypting bio-data. Link established. Welcome to the Elite tier.</p>p>
+                                            </div>div>
+                          </div>div>
 
+                          <div class="induction-controls">
+                                            <button class="skip-btn" id="induction-skip">INITIALIZE SYSTEM</button>button>
+                          </div>div>
+            </div>div>
+    </div>div>
+
+      <!-- Main Application UI -->
       <div id="app-container">
-                <aside>
-                              <div class="logo">
-                                                <i data-lucide="activity"></i>i>
-                                                MOVE
+                <header id="main-header">
+                              <div class="brand-logo">
+                                                <i data-lucide="activity" class="run-accent"></i>i>
+                                                <span class="brand-name">MOVE<span class="run-accent">ELITE</span>span></span>span>
                               </div>div>
-                              <ul class="nav-links">
-                                                <li><a href="#" class="nav-item active" id="nav-dash" data-tab="dashboard"><i data-lucide="layout-dashboard"></i>i> <span>Dashboard</span></a>a></li>
-                                              <li><a href="#" class="nav-item" id="nav-analytics" data-tab="analytics"><i data-lucide="bar-chart-3"></i>i> <span>Analytics</span></a>a></li>
-                                              <li><a href="#" class="nav-item" id="nav-community" data-tab="community"><i data-lucide="users"></i>i> <span>Community</span></a>a></li>
-                                              <li><a href="#" class="nav-item" id="nav-journal" data-tab="journal"><i data-lucide="book-open"></i>i> <span>Journal</span>span></a>a></li>
-                                              <li><a href="#" class="nav-item" id="nav-ar" data-tab="ar-hub"><i data-lucide="view"></i>i> <span>AR Hub</span>span></a>a></li>
-                                              <li><a href="#" class="nav-item" id="nav-connect" data-tab="connections"><i data-lucide="link"></i>i> <span>Connect</span>span></a>a></li>
-                              </ul>ul>
-                            <div class="user-profile glass" style="padding: 15px; margin-top: auto; display: flex; align-items: center; gap: 12px;">
-                                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Pathfinder" alt="Avatar" class="avatar" style="width: 40px; height: 40px;">
-                                            <div>
-                                                                  <div style="font-weight: 600; font-size: 0.85rem;">User</div>
-                                                                  <div style="font-size: 0.7rem; color: var(--text-secondary);">LVL 1 Pathfinder</div>
-                                            </div>
-                            </div>
-                </aside>
-                <main>
-                              <div id="hologram-wrapper"></div>
-                              <div class="content-layer animated">
-                                                <header class="header">
-                                                                      <div>
-                          <h1 class="glow-text" style="font-size: 2.8rem; letter-spacing: -1px;">Welcome back.</h1>h1>
-                                                                                                <p style="color: var(--text-secondary); font-size: 1.1rem; margin-top: 5px;">Synchronizing with your metabolic rhythm.</p>p>
-                                                                      </div>
-                                                </header>header>
 
-                                                <section class="affirmation-box glass" style="margin-bottom: 30px; display: flex; justify-content: space-around; align-items: center; padding: 25px;">
-                                                                      <div style="text-align: center; position: relative;">
-                                                                                                <svg width="120" height="120" viewBox="0 0 100 100">
-                                                                                                                              <circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="8"/>
-                                                                                                                              <circle cx="50" cy="50" r="30" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="8"/>
-                                                                                                                              <circle cx="50" cy="50" r="20" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="8"/>
-                                                                                                                              <circle cx="50" cy="50" r="40" fill="none" stroke="#26ffab" stroke-width="8" stroke-dasharray="251.2" stroke-dashoffset="60" stroke-linecap="round"/>
-                                                                                                                              <circle cx="50" cy="50" r="30" fill="none" stroke="#ff4d6a" stroke-width="8" stroke-dasharray="188.4" stroke-dashoffset="40" stroke-linecap="round"/>
-                                                                                                                              <circle cx="50" cy="50" r="20" fill="none" stroke="#4d9aff" stroke-width="8" stroke-dasharray="125.6" stroke-dashoffset="20" stroke-linecap="round"/>
-                                                                                                  </svg>svg>
-                                                                                                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-                                                                                                                              <i data-lucide="heart" style="width: 16px; color: #ff4d6a;"></i>i>
-                                                                                                  </div>
-                                                                      </div>
-                                                                      <div style="display: flex; flex-direction: column; gap: 10px;">
-                                                                                                <div style="color: #26ffab; font-weight: 700;">Steps: 8,420</div>
-                                                                                                <div style="color: #ff4d6a; font-weight: 700;">Active: 45 min</div>
-                                                                                                <div style="color: #4d9aff; font-weight: 700;">Cals: 1,850</div>
-                                                                      </div>
-                                                </section>section>
+                              <div class="global-bio-hud" id="bio-hud">
+                                                <i data-lucide="heart" class="bpm-icon"></i>i>
+                                                <div class="bio-data">
+                                                                      <span class="bpm-value" id="bpm-display">72</span>span>
+                                                                      <span class="bpm-unit">BPM</span>span>
+                                                </div>div>
+                                                <div class="bio-wave-container">
+                                                                      <svg viewBox="0 0 100 40" class="bio-wave">
+                                                                                                <path d="M0 20 L20 20 L25 10 L35 30 L40 20 L100 20" />
+                                                                        </svg>svg>
+                                                </div>div>
+                              </div>div>
 
-                                                <div id="tab-dashboard" class="tab-content">
-                                                                      <div class="dashboard-grid">
-                                                                                                <div class="card glass" style="background: linear-gradient(135deg, rgba(38, 255, 171, 0.1) 0%, rgba(0,0,0,0) 100%);">
-                                                                                                                              <div class="card-title">Energy Score</div>
-                                                                                                                              <div class="card-value" style="font-size: 3.5rem;">82</div>
-                                                                                                                              <div class="card-trend" style="color: #26ffab;">High Readiness</div>
-                                                                                                  </div>
-                                                                                                <div class="card glass">
-                                                                                                                              <div class="card-title">Sleep</div>
-                                                                                                                              <div class="card-value">7h 24m</div>
-                                                                                                  </div>
-                                                                                                <div class="card glass">
-                                                                                                                              <div class="card-title">Stress</div>
-                                                                                                                              <div class="card-value">Low</div>
-                                                                                                  </div>
-                                                                      </div>
-                                                </div>
-                              </div>
-                </main>
-      </div>
+                              <button class="scan-btn" id="scan-trigger">
+                                                <i data-lucide="scan"></i>i>
+                              </button>button>
+                </header>header>
 
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-      <script src="scripts/main.js"></script>
-      <script src="scripts/ar_hologram.js"></script>
-</body>
-</html>html>
-
-                </main>
-                                            </div></li></li></span></span></li>
-                </aside>
-</body></title>
-  </head>
+                <div class="insight-ticker">
+                              <div class="ticker-content">
+                                                SYSTEM OPTIMIZED 
